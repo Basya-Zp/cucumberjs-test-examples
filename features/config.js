@@ -1,5 +1,14 @@
 'use strict';
 
 module.exports = {
-  baseUrl: 'https://api.github.com/'
+  url: {
+    BASE: 'https://api.github.com/',
+    SUB: {
+      GIST: 'gists'
+    }
+  },
+  auth: {
+    username    : '',
+    token       : ''
+  }
 };

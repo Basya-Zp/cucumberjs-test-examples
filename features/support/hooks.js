@@ -1,3 +1,10 @@
-/**
- * Created by roman_sachenko on 5/11/17.
- */
+'use strict';
+
+const http    = require('request-promise');
+const config  = require('../config');
+
+module.exports = function(){
+  let self = this;
+
+};
+
