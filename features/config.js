@@ -8,7 +8,7 @@ module.exports = {
     }
   },
   auth: {
-    username    : 'Basya-Zp',
-    token       : 'bb56ae9d98b71cb6884708b3528f58d27ebf0aa9'
+    username    : '',
+    token       : ''
   }
 };
