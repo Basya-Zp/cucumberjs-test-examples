@@ -13,6 +13,7 @@
     "cucumber": "^2.0.0-rc.9"
   },
   "dependencies": {
+    "ajv": "^5.0.1",
     "request-promise": "^4.2.1"
   }
 }
