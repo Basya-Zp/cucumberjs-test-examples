@@ -1,8 +1,9 @@
 'use strict';
 
-const World       = require('../support/world');
-const chai        = require('chai');
-const expect      = chai.expect;
+const World           = require('../support/world');
+const chai            = require('chai');
+const expect          = chai.expect;
+const schemaValidator = require('../support/validator');
 
 module.exports = function() {
   let self = this;
@@ -13,7 +14,6 @@ module.exports = function() {
   self.When(/^I GET the gist "([^"]*)"$/, (gist, callback) => {
     self.sendHttpRequest('GET', gist)
       .then(gistResponse => {
-        expect(self.responseBody).to.be.an('object');
         callback(null, gistResponse);
       })
       .catch(err => {
@@ -37,6 +37,15 @@ module.exports = function() {
     expect(self.responseBody).have.property('url').and.equal(urlValue);
     callback(null, true);
   });
+
+
+  self.Then(/^body should suit regular gist schema$/, (callback) => {
+    if(!schemaValidator.validate(schemaValidator.SCHEMAS.GIST_REGULAR, self.responseBody)) {
+      throw new Error();
+    }
+    callback(null, true);
+  });
+
 
   /**
    * Star a Gist
@@ -153,7 +162,7 @@ module.exports = function() {
     expect(self.responseStatusCode).to.be.equal(parseInt(requestedStatus));
     callback(null, true);
   });
-  
+
   //GET /gists/:id/commits
 
   /**

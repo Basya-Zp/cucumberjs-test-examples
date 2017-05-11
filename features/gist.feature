@@ -1,3 +1,4 @@
+@gist_management
 Feature: Gist management
   As a GitHub API client
   I want to be able to manage gists (read, create, update, delete)
@@ -7,6 +8,7 @@ Feature: Gist management
     When I GET the gist "gists/2e0a63118e7224eb02351f5ae7176ae8"
     Then get one gist http status should be 200
     And $.url should equal "https://api.github.com/gists/2e0a63118e7224eb02351f5ae7176ae8"
+    And body should suit regular gist schema
 
   @gist-star
   Scenario: Start a gist
@@ -38,6 +40,7 @@ Feature: Gist management
     }
     """
     Then create one http status should be 201
+    And body should suit regular gist schema
 
   @gist-update
   Scenario: Edit a gist
@@ -57,6 +60,7 @@ Feature: Gist management
     }
     """
     Then update one gist http status should be 200
+    And body should suit regular gist schema
 
   @gist-get-specific-version
   Scenario: Get a specific version gist

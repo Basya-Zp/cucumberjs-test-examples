@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "ajv": "^5.0.1",
+    "joi": "^10.4.1",
     "request-promise": "^4.2.1"
   }
 }
