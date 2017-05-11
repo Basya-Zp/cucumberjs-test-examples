@@ -103,6 +103,13 @@ module.exports = function() {
     callback(null, true);
   });
 
+  self.Then(/^body should suit regular array of commit schemas$/, (callback) => {
+    if(!schemaValidator.validate(schemaValidator.SCHEMAS.COMMIT_ARRAY, self.responseBody)) {
+      throw new Error();
+    }
+    callback(null, true);
+  });
+
   /**
    * Create a new gist with provided JSON data
    */
@@ -215,6 +222,14 @@ module.exports = function() {
 
   self.Then(/^get all users gists http status should be (\d+)$/, (requestedStatus, callback) => {
     expect(self.responseStatusCode).to.be.equal(parseInt(requestedStatus));
+    callback(null, true);
+  });
+
+  self.Then(/^response should contain array of gists$/, (callback) => {
+    if(!schemaValidator.validate(schemaValidator.SCHEMAS.GIST_ARRAY, self.responseBody)) {
+      console.log(schemaValidator.validate(schemaValidator.SCHEMAS.GIST_ARRAY, self.responseBody));
+      throw new Error();
+    }
     callback(null, true);
   });
 

@@ -24,6 +24,7 @@ Feature: Gist management
   Scenario: Get gist commits
     When I GET gist "gists/2e0a63118e7224eb02351f5ae7176ae8" commits
     Then get gists commits http status should be 200
+    And body should suit regular array of commit schemas
 
   @gist-create
   Scenario: Create a gist
@@ -66,6 +67,7 @@ Feature: Gist management
   Scenario: Get a specific version gist
     When I GET the specific version gist
     Then get specific version gist http status should be 200
+    And body should suit regular gist schema
 
   @gist-delete
   Scenario: Delete a gist
@@ -77,8 +79,10 @@ Feature: Gist management
   Scenario: Get all users gists
     When I GET all users gists
     Then get all users gists http status should be 200
+    And  response should contain array of gists
 
   @gist-user-get-all-starred
   Scenario: Get all users starred gists
     When I GET all users starred gists
     Then get all users gists http status should be 200
+    And  response should contain array of gists
